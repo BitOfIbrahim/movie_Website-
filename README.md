@@ -25,7 +25,7 @@ My List <br>
 Users can add movies to their personalized list. <br>
 Display the list of movies added by the user. <br>
 Users can delete movies from their list. <br>
-Technologies Used :  <br>
+<br> Technologies Used :  <br>
 Backend: Node.js, Express.js <br>
 Frontend : CSS  <br>
 Database: PostgreSQL<br>

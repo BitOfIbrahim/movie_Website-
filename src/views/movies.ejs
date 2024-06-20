@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .movie-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .movie-card {
+            width: 200px;
+            margin: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .movie-card h2 {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .movie-card img {
+            width: 150px;
+            height: 200px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 0 5px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .pagination a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Your One-Stop Shop for Movies</h1>
+
+    <form method="post" action="/searchedMovie">
+        <input name="searchedMovie" id="searchedMovie" placeholder="Search for a movie">
+        <button type="submit">Search</button>
+    </form>
+
+    <form method="get" action="/myList">
+        <button type="submit">my list</button>
+    </form>
+
+    
+
+
+
+    
+    <div class="movie-container">
+        <% data.Search.forEach(item => { %>
+            <div class="movie-card">
+                <a href="/movies/<%= item.Title %>">
+                    <h2><%= item.Title %></h2>
+                    <img src="<%= item.Poster %>" alt="<%= item.Title %> Poster">
+                </a>
+               
+            </div>
+        <% }) %>
+    </div>
+
+    <div class="pagination">
+        <% for (let i = 1; i <= 20; i++) { %>
+            <a href="/page?i=<%= i %>"><%= i %></a>
+        <% } %>
+    </div>
+
+   
+
+    
+</body>
+</html>

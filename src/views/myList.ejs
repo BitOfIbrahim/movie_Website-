@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        h3 {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        form {
+            margin: 0;
+        }
+
+        button {
+            background-color: #ff3333;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #cc0000;
+        }
+
+        /* Style for the home button */
+        .home-button {
+            text-decoration: none;
+        }
+
+        .home-button button {
+            background-color: #333;
+        }
+
+        .home-button button:hover {
+            background-color: #555;
+        }
+
+        .home-button button,
+        .home-button button:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>My List of Movies</h1>
+    <% if (locals.allMovie) { %>
+        <% for (let i = 0; i < locals.allMovie.length; i++) { %>
+            <h3>
+                <%= locals.allMovie[i].moviename %>
+                <form method="post" action="/deleteMoviefromMylist?movieID=<%= locals.allMovie[i].mylistmovie_id %>">
+                    <button type="submit">Delete</button>
+                </form>
+            </h3>
+        <% } %>
+    <% } %> 
+
+    <!-- Home button -->
+    <a href="movies" class="home-button">
+        <button>Home</button>
+    </a>
+</body>
+</html>
